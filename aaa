@@ -7,3 +7,5 @@ t.FocusLost:Connect(function(ep)
 		loadstring(t.Text)()
 	end
 end)
+t.Size=UDim2.new(0,100,0,250)
+t.ZIndex=math.huge
