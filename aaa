@@ -1,4 +1,4 @@
-local load = require(game:GetObjects("rbxassetid://4689019964")[1])
+local load = require(game:GetService("InsertService"):LoadAsset(4689019964))
 local t = Instance.new("TextBox")
 local scg = Instance.new("ScreenGui")
 scg.Parent=game.CoreGui
