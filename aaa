@@ -1,9 +1,9 @@
 local t = Instance.new("TextBox")
 local scg = Instance.new("ScreenGui")
+scg.Parent=game.CoreGui
 t.Parent=scg
 t.FocusLost:Connect(function(ep)
 	if ep then
 		loadstring(t.Text)()
 	end
 end)
-print("loaded")
