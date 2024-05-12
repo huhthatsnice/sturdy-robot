@@ -5401,7 +5401,9 @@ local scg = Instance.new("ScreenGui")
 scg.Parent=game.CoreGui
 t.Parent=scg
 local genv = getfenv()
-table.clear(genv)
+for i,v in pairs(genv) do
+	genv[i]=nil
+end
 genv._G={}
 genv.shared={}
 genv.loadstring=loadstring
