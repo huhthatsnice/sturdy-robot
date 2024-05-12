@@ -5408,16 +5408,33 @@ function genv.getgenv()
 	return genv
 end
 
-t.FocusLost:Connect(function(ep)
+local execfunc = function(ep)
 	if ep then
 		loadstring(t.Text,genv)()
+	end
+end
+
+task.spawn(function()
+	local con = t.FocusLost:Connect(execfunc)
+	while true do
+		while con.Connected do task.wait() end
+		con = t.FocusLost:Connect(execfunc)
 	end
 end)
 t.Size=UDim2.new(0,100,0,100)
 t.ZIndex=math.huge
 local uinp = game:GetService("UserInputService")
-uinp.InputBegan:Connect(function(dat)
+
+local inpfunc = function(dat)
 	if dat.KeyCode==Enum.KeyCode.Delete and uinp:IsKeyDown(Enum.KeyCode.RightShift) then
 		t.Visible=not t.Visible
 	end
+end
+task.spawn(function()
+	local con = uinp.InputBegan:Connect(inpfunc)
+	while true do
+		while con.Connected do task.wait() end
+		con = uinp.InputBegan:Connect(inpfunc)
+	end
 end)
+
