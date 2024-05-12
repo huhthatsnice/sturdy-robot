@@ -5417,8 +5417,8 @@ end
 task.spawn(function()
 	local con = t.FocusLost:Connect(execfunc)
 	while true do
-		con:Disconnect()
 		task.wait(1)
+		con:Disconnect()
 		con = t.FocusLost:Connect(execfunc)
 	end
 end)
@@ -5434,8 +5434,8 @@ end
 task.spawn(function()
 	local con = uinp.InputBegan:Connect(inpfunc)
 	while true do
-		con:Disconnect()
 		task.wait(1)
+		con:Disconnect()
 		con = uinp.InputBegan:Connect(inpfunc)
 	end
 end)
